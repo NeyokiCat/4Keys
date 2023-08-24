@@ -1,6 +1,6 @@
 import math
 import csv
-import random
+import secrets
 
 def main():
     # Start off interface
@@ -26,13 +26,13 @@ NaAsM = NaAM + special # Numbers-Alpha-SpecialCharacter Mix
 def generate(length, rul):
     out = ""
     for i in range(length):
-        out += random.choice(rul)
+        out += secrets.choice(rul)
     return out
 
 # Special Rules
 AppleM = generate(6,NaAM) + '-' + generate(6,NaAM) + '-' + generate(6,NaAM)
 MacM = generate(2,NAM) + ':' + generate(2,NAM) + ':' + generate(2,NAM) + ':' + generate(2,NAM) + ':' + generate(2,NAM) + ':' + generate(2,NAM)
-
+TokenM = secrets.token_urlsafe(16)
 def generateRul(specRul):
     return specRul
     
@@ -41,3 +41,4 @@ def generateRul(specRul):
 # print(generate(12,NaAsM))
 # print(generate(6,Nonly))
 # print(generateRul(MacM))
+# print(generateRul(TokenM))
