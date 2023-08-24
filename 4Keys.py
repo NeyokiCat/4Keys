@@ -1,6 +1,7 @@
 import math
 import csv
 import secrets
+import string
 
 def main():
     # Start off interface
@@ -10,29 +11,29 @@ def main():
     print()
 
 # Patterns
-numbers = ['0','1','2','3','4','5','6','7','8','9']
-alpha = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z']
-Alpha = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z']
-special = ['!','@','#','$','%','^','&','-','_']
+# numbers = string.digits
+# alpha = string.ascii_lowercase
+# Alpha = string.ascii_uppercase
+special = '!@#$%^&-_'
 
 # Rules
-Nonly = numbers # Numbers Only
-NaM = Nonly + alpha # Numbers-lowerAlpha Mix
-NAM = Nonly + Alpha # Numbers-upperAlpha Mix
-NaAM = NaM + Alpha # Numbers-Alpha Mix
+Nonly = string.digits # Numbers Only
+NaM = string.digits + string.ascii_lowercase # Numbers-lowerAlpha Mix
+NAM = string.digits + string.ascii_uppercase # Numbers-upperAlpha Mix
+NaAM = string.digits + string.ascii_letters # Numbers-Alpha Mix
 NaAsM = NaAM + special # Numbers-Alpha-SpecialCharacter Mix
 
 # Generate
 def generate(length, rul):
-    out = ""
-    for i in range(length):
-        out += secrets.choice(rul)
+    out = ' '.join(secrets.choice(rul) for i in range(length))
     return out
 
 # Special Rules
 AppleM = generate(6,NaAM) + '-' + generate(6,NaAM) + '-' + generate(6,NaAM)
 MacM = generate(2,NAM) + ':' + generate(2,NAM) + ':' + generate(2,NAM) + ':' + generate(2,NAM) + ':' + generate(2,NAM) + ':' + generate(2,NAM)
-TokenM = secrets.token_urlsafe(16)
+TokenM = secrets.token_urlsafe()
+# xkcdM =  # https://xkcd.com/936/
+
 def generateRul(specRul):
     return specRul
     
