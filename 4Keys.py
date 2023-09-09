@@ -13,7 +13,7 @@ startOff = '''Welcome to 4Keys\nGenerate a new key(1), Search for a key (2), Sho
 # numbers = string.digits
 # alpha = string.ascii_lowercase
 # Alpha = string.ascii_uppercase
-special = '!@#$%^&-_'
+special = '!@#$%^&*+<>?-'
 
 # Rules
 NM = string.digits # Numbers Only
